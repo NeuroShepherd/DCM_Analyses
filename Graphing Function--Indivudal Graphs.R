@@ -1,6 +1,6 @@
 
 # Example data to read in (Myrthe, the csv listed is the same you sent to me)
-dcm_data <- read_csv(file = "dcm_data_from_myrthe.csv") %>%
+dcm_data <- read_csv(file = "Data tables/dcm_data_from_myrthe.csv") %>%
   dplyr::filter(Dx == "ONC") %>%
   select(PIDN,R_dmThal2_R_dmThal2:L_Amy_L_Amy) %>%
   select(-c(R_dmThal2_R_dmThal2, L_dmThal2_L_dmThal2, R_Hypo_R_Hypo, L_Hypo_L_Hypo, R_Amy_R_Amy, L_Amy_L_Amy, ACC_ACC, R_dlPAG_R_dlPAG, R_vAI_R_vAI, L_vAI_L_vAI))

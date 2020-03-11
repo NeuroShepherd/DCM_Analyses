@@ -1,4 +1,8 @@
 
+library(tidyverse)
+library(useful)
+
+
 # Example data to read in (Myrthe, the csv listed is the same you sent to me)
 dcm_data <- read_csv(file = "Data tables/dcm_data_from_myrthe.csv") %>%
   dplyr::filter(Dx == "ONC") %>%
@@ -28,11 +32,6 @@ make_polar_graphs <- function(dataframe, node1, node2, graph_title){
 
 # Example run of the fxn using nodes1 and nodes2 discussed with Kate this afternoon
 make_polar_graphs(dcm_data, node1 = R_vAI_L_vAI, node2 = L_vAI_R_vAI, graph_title = "Oink")
-
-
-
-
-
 
 
 

@@ -1,0 +1,65 @@
+MATLab script from Myrthe
+
+
+clear all;close all;clc
+%upload dataset
+[subm]=readtable('Users/mrijpma/Box Sync/2019/rSMS_DCM/documents/SN_bi_subCM_NC+bvFTD.xlsx');
+submm = sortrows(subm,{'Dx'},{'ascend'});
+subcm = submm(1:44,:);
+
+%assign variable names, raw data (expected values)
+LRvAI = subcm(:,126);
+RLvAI = subcm(:,117);
+RamyRthal = subcm(:,141);
+RthalRamy = subcm(:,69);
+PAGACC = subcm(:,108);
+ACCPAG = subcm(:,135); 
+RThalPAG = subcm(:,65);
+PAGRThal = subcm(:,111);
+
+%transform variables to array
+x = table2array(LRvAI);
+y = table2array(RLvAI);
+w = table2array(RamyRthal);
+z = table2array(RthalRamy);
+a = table2array(PAGACC);
+b = table2array(ACCPAG);
+c = table2array(RThalPAG);
+d = table2array(PAGRThal);
+
+%need to calculate the theta and r from x and y variables (both nodes)
+[thxy,rxy] = cart2pol(x,y);
+[thwz, rwz] = cart2pol(w,z);
+[thab, rab] = cart2pol(a,b);
+[thcd, rcd] = cart2pol(c,d);
+
+%polarscatter
+ps = polarscatter(thxy, rxy, 'filled'); title('right and left vAI ONC distribution');
+ps = polarscatter(thwz, rwz); title('right thalamus and right amygdala ONC distribution');
+ps = polarscatter(thab, rab); title('PAG and ACC ONC distribution');
+ps = polarscatter(thcd, rcd); title('right thalamus and PAG distribution');
+
+%lay out polarscatterplot
+ps.SizeData = 75;
+ps.MarkerFaceColor = [.8500 0.3250 0.0980];
+ps.MarkerEdgeColor = [.8500 0.3250 0.0980];
+pax = gca;
+pax.FontSize = 16;
+thetaticks(0:45:315);
+pax.NextPlot = 'replace';
+pax.RAxisLocation = 190;
+
+%example
+th = 0;
+r = 0;
+ps =polarscatter(th,r)
+
+%store
+U = subcm(:,104);
+V = subcm(:,95);
+PAGLhypo = table2array(U);
+LhypoPAG = table2array(V);
+RamyRthal = table2array(A);
+RthalRamy = table2array(B);
+polarscatter(PAGLhypo, LhypoPAG);
+polarscatter(RamyRthal, RthalRamy);

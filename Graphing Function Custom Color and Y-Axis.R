@@ -37,8 +37,13 @@ make_polar_graphs_custom_color <- function(dataframe, node1, node2, graph_title,
           axis.text.y = element_text(vjust=12)
           )
 
+  # Option--put labels directly on the graph:
+  #  annotate(label=c("0.1","0.2","0.3","0.4"),x=202.5, y=c(0.1, 0.2 ,0.3, 0.4),
+   #          geom="text", size=3, color="darkgrey")
   
 }
+
+
 
 # Example run of the fxn using nodes1 and nodes2 discussed with Kate this afternoon
 make_polar_graphs_custom_color(dcm_data, 

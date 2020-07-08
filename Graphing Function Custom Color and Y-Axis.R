@@ -30,19 +30,20 @@ make_polar_graphs_custom_color <- function(dataframe, node1, node2, graph_title,
     coord_polar(start = pi*3/2, direction = -1) +
     geom_point(data = polar_coords, aes(x=theta,y=r,color=!!coloring_var)) +
     ggtitle(graph_title) +
-    theme_bw() +
     scale_color_manual(values = c("#E31919",  "#46A619",  "#1F7AC4"))  +
     theme(#axis.text.y = element_blank(),
           axis.ticks.y = element_blank(),
-          axis.text.y = element_text(vjust=12)
+          axis.text.y = element_text(vjust=12),
+          #plot.margin = margin(2, 2, 2, 2, "cm"),
+          axis.title.y = element_text(angle=0, vjust=0.5)
           )
 
   # Option--put labels directly on the graph:
   #  annotate(label=c("0.1","0.2","0.3","0.4"),x=202.5, y=c(0.1, 0.2 ,0.3, 0.4),
    #          geom="text", size=3, color="darkgrey")
   
-}
-
+} 
+# http://www.sthda.com/english/wiki/ggplot2-texts-add-text-annotations-to-a-graph-in-r-software
 
 
 # Example run of the fxn using nodes1 and nodes2 discussed with Kate this afternoon

@@ -1,5 +1,7 @@
 
-
+# This was a really lazy approach to making a blank plot; I repurposed the plotting function to plot white points on a white
+# background, and then created a 2-point tibble that created a polar plot roughly the same size as the other polar plots
+# that will be generated for this project (i.e. 0-0.4 r values).
 
 blank_polar_graph <- function(dataframe, node1, node2, graph_title, coloring_var=NULL){
   node1 <- enquo(node1)
